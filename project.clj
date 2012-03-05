@@ -1,4 +1,4 @@
-(defproject lein-mustache "0.1-SNAPSHOT"
+(defproject lein-mustache "0.1"
   :description "Leiningen plugin for evaluating Mustache templates"
   :eval-in-leiningen true
   :dependencies [[org.clojure/clojure "1.3.0"]
