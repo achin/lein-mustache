@@ -41,4 +41,4 @@ Will output
 Contributors
 ============
 
-* [Alex Chin](https://github.com/alexbachin)
+[Alex Chin](https://github.com/achin)
