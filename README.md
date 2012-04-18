@@ -1,4 +1,4 @@
-This plugin evaluates [Mustache](http://mustache.github.com/) templates using the [Clostache](https://github.com/fhd/clostache) library. This library is in development and has been tested with Clojure 1.3.0 and Leiningen 1.6.2.
+This plugin evaluates [Mustache](http://mustache.github.com/) templates using the [Clostache](https://github.com/fhd/clostache) library. This library is in development and has been tested with Clojure 1.3.0, Leiningen 1.6.2, and Leiningen 2.0.0-preview3.
 
 Installation
 ============
