@@ -18,7 +18,7 @@ To evaluate a Mustache template in file, `template`, with Clojure data in file, 
 
     $ lein mustache template data
 
-To place evaluate Mustache templates listed in `project.clj` with Clojure data in file `data`, include a key `:mustache` in `project.clj`.  The corresponding value is a sequence of maps, each containing a `:template` and `:destination`.
+To place evaluate Mustache templates listed in `project.clj` with Clojure data in file `data`, include a key `:mustache` in `project.clj`.  The corresponding value is a sequence of maps, each containing a `:template-path` and `:destination-path`.
 
 Then, invoke `lein mustache` without the template argument,
 
@@ -48,8 +48,8 @@ Will output
 
 If `project.clj` contains a `:mustache` entry,
 
-    :mustache [{:template "resources/hello.mustache"
-                :destination "target/hello.txt"}]
+    :mustache [{:template-path "resources/hello.mustache"
+                :destination-path "target/hello.txt"}]
 
 Then running
 
