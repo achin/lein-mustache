@@ -18,6 +18,14 @@ To evaluate a Mustache template in file, `template`, with Clojure data in file, 
 
     $ lein mustache template data
 
+To place evaluate Mustache templates listed in `project.clj` with Clojure data in file `data`, include a key `:mustache` in `project.clj`.  The corresponding value is a sequence of maps, each containing a `:template` and `:destination`.
+
+Then, invoke `lein mustache` without the template argument,
+
+    $ lein mustache data
+
+Destinations for evaluated templates may themselves be templates,
+
 Example
 =======
 
@@ -37,6 +45,17 @@ Then running
 Will output
 
     Hello, Alex, welcome to Your Computer.
+
+If `project.clj` contains a `:mustache` entry,
+
+    :mustache [{:template "resources/hello.mustache"
+                :destination "target/hello.txt"}]
+
+Then running
+
+    lein mustache resources/data.clj
+
+Will create the file `target/hello.txt` with the same contents as above.
 
 Contributors
 ============
