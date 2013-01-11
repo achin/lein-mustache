@@ -1,16 +1,15 @@
 (ns leiningen.mustache
-  (:require [clostache.parser :as parser]
-            [clojure.string :as string])
+  (:require [clostache.parser :as parser])
   (:import java.io.PushbackReader))
 
 (defn from-file [path]
-  (with-open [r (java.io.PushbackReader. (clojure.java.io/reader path))]
+  (with-open [r (PushbackReader. (clojure.java.io/reader path))]
     (read r)))
 
 (defn- render-from-file
   [template-path data]
   (let [template (slurp template-path)]
-    (string/trim-newline (parser/render template data))))
+    (parser/render template data)))
 
 (defn render-from-files [template-path data-path]
   (render-from-file template-path (from-file data-path)))
@@ -34,12 +33,14 @@
   
   or:
   
-  `lein mustache data`
-  `data` must be a Clojure map and one or more templates are specified in
-  project.clj."
-  ([project data]
-   (let [d (from-file data)]
-     (doseq [tmpl (:mustache project)]
-       (render-project-entry tmpl d))))
+  `lein mustache data-paths`
+  `data-paths` must be a path to a file containing a Clojure map (or a collection
+  of paths) and one or more templates are specified in project.clj."
+  ([project data-paths]
+    (if-not (coll? data-paths)
+      (mustache project [data-paths])
+      (let [d (apply merge (map from-file (distinct (filter identity data-paths))))]
+        (doseq [tmpl (:mustache project)]
+          (render-project-entry tmpl d)))))
   ([project template data]
-   (println (render-from-files template data))))
+    (print (render-from-files template data))))
