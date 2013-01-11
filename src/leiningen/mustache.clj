@@ -33,12 +33,12 @@
   
   or:
   
-  `lein mustache data`
-  `data` must be a Clojure map and one or more templates are specified in
-  project.clj."
-  ([project data]
-   (let [d (from-file data)]
+  `lein mustache data-path`
+  `data-path` must be a path to a file containing a Clojure map and one or
+  more templates are specified in project.clj."
+  ([project data-path]
+   (let [d (from-file data-path)]
      (doseq [tmpl (:mustache project)]
        (render-project-entry tmpl d))))
   ([project template data]
-   (print (render-from-files template data))))
+    (print (render-from-files template data))))
