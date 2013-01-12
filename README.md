@@ -1,15 +1,18 @@
-This plugin evaluates [Mustache](http://mustache.github.com/) templates using the [Clostache](https://github.com/fhd/clostache) library. This library is in development and has been tested with Clojure 1.3.0, Leiningen 1.6.2, and Leiningen 2.0.0-preview3.
+lein-mustache
+=============
+
+This plugin evaluates [Mustache](http://mustache.github.com/) templates using the [Clostache](https://github.com/fhd/clostache) library. This library is in development and has been tested with Clojure 1.3.0 and Leiningen 2.0.0-preview10.
 
 Installation
 ============
 
-`lein-mustache` is available as a plugin.
+`lein-mustache` is available as a plugin. So, add this to your `~/.lein/profiles.clj`:
 
-    $ lein plugin install lein-mustache 0.1
+    {:user {:plugins [[lein-mustache "0.2"]]}}
 
 Or you can include it in your `project.clj`:
 
-    :dev-dependencies [[lein-mustache "0.1"]]
+    {:profiles {:dev {:plugins [[lein-mustache "0.2"]]}}}
 
 Use
 ===
@@ -18,7 +21,7 @@ To evaluate a Mustache template in file, `template`, with Clojure data in file, 
 
     $ lein mustache template data
 
-To place evaluate Mustache templates listed in `project.clj` with Clojure data in file `data`, include a key `:mustache` in `project.clj`.  The corresponding value is a sequence of maps, each containing a `:template-path` and `:destination-path`.
+To evaluate Mustache templates listed in `project.clj` with Clojure data in file `data`, include a key `:mustache` in `project.clj`.  The corresponding value is a sequence of maps, each containing a `:template-path` and `:destination-path`.
 
 Then, invoke `lein mustache` without the template argument,
 
@@ -61,3 +64,5 @@ Contributors
 ============
 
 [Alex Chin](https://github.com/achin)
+[Charles Simpson](https://github.com/charlessimpson)
+[John Stoneham](https://github.com/jstoneham)
