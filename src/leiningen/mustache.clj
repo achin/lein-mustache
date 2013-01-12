@@ -1,16 +1,15 @@
 (ns leiningen.mustache
-  (:require [clostache.parser :as parser]
-            [clojure.string :as string])
+  (:require [clostache.parser :as parser])
   (:import java.io.PushbackReader))
 
 (defn from-file [path]
-  (with-open [r (java.io.PushbackReader. (clojure.java.io/reader path))]
+  (with-open [r (PushbackReader. (clojure.java.io/reader path))]
     (read r)))
 
 (defn- render-from-file
   [template-path data]
   (let [template (slurp template-path)]
-    (string/trim-newline (parser/render template data))))
+    (parser/render template data)))
 
 (defn render-from-files [template-path data-path]
   (render-from-file template-path (from-file data-path)))
@@ -42,4 +41,4 @@
      (doseq [tmpl (:mustache project)]
        (render-project-entry tmpl d))))
   ([project template data]
-   (println (render-from-files template data))))
+   (print (render-from-files template data))))
