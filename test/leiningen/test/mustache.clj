@@ -13,4 +13,4 @@
 (fact (render-from-files
         (test-resource "dummy-template.mustache")
         (test-resource "dummy-data.clj"))
-      => "alpha, beta, and gamma are Greek letters.")
+      => "alpha, beta, and gamma are Greek letters.\n")
