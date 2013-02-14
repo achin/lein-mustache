@@ -6,13 +6,13 @@
   (with-open [r (PushbackReader. (clojure.java.io/reader path))]
     (read r)))
 
-(defn- render-from-file
+(defn render-from-data
   [template-path data]
   (let [template (slurp template-path)]
     (parser/render template data)))
 
 (defn render-from-files [template-path data-path]
-  (render-from-file template-path (from-file data-path)))
+  (render-from-data template-path (from-file data-path)))
 
 (defn render-project-entry
   "Renders a single entry from the value of a :mustache entry in project.clj."
@@ -21,7 +21,7 @@
     (do
       (clojure.java.io/make-parents dst)
       (spit dst
-            (render-from-file template-path data)))))
+            (render-from-data template-path data)))))
 
 (defn mustache
   "Evaluate a Mustache template.
