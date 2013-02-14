@@ -1,4 +1,4 @@
-(defproject lein-mustache "0.3-SNAPSHOT"
+(defproject lein-mustache "0.3"
   :description "Leiningen plugin for evaluating Mustache templates"
   :eval-in-leiningen true
   :min-lein-version "2.0.0"
